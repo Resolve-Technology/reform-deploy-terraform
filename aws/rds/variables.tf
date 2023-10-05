@@ -21,7 +21,7 @@ variable "cidr_blocks" {
   default     = ["172.17.0.0/20", "172.17.16.0/20", "192.168.96.0/23"]
 }
 
-variable "name" {
+variable "rds_name" {
   type        = string
   description = "The name of database"
 }

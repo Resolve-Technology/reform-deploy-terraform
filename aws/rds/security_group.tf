@@ -1,5 +1,5 @@
 resource "aws_security_group" "security_group" {
-  name_prefix = join("", [var.name, "-"])
+  name_prefix = join("", [var.rds_name, "-"])
   vpc_id      = var.vpc_id
 
   ingress {
@@ -18,7 +18,7 @@ resource "aws_security_group" "security_group" {
   }
 
   tags = {
-    Name       = var.name
+    Name       = var.rds_name
     managed-by = "Terraform"
   }
 }

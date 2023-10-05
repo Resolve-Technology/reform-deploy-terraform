@@ -4,7 +4,7 @@ resource "aws_db_instance" "db_instance" {
   db_name                = var.db_name
   engine                 = var.engine
   engine_version         = var.engine_version
-  identifier_prefix      = join("", [var.name, "-"])
+  identifier_prefix      = join("", [var.rds_name, "-"])
   instance_class         = var.instance_class
   multi_az               = var.multi_az
   password               = random_password.password.result
@@ -13,7 +13,7 @@ resource "aws_db_instance" "db_instance" {
   username               = var.username
   vpc_security_group_ids = [aws_security_group.security_group.id]
   tags = {
-    Name       = var.name
+    Name       = var.rds_name
     managed-by = "Terraform"
   }
 
