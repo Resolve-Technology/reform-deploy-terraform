@@ -12,4 +12,5 @@ output "db_username" {
 
 output "db_password" {
   value = resource.aws_db_instance.db_instance.password
+  sensitive = true
 }
