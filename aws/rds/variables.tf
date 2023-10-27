@@ -40,6 +40,12 @@ variable "db_name" {
   default     = "wordpress"
 }
 
+variable "username" {
+  type        = string
+  description = "The username of database"
+  default     = "wordpress"
+}
+
 variable "allocated_storage" {
   type        = number
   description = "The size of database"
@@ -74,10 +80,4 @@ variable "multi_az" {
   type        = bool
   description = "Specifies if the RDS instance is multi-AZ"
   default     = false
-}
-
-variable "username" {
-  type        = string
-  description = "The username of database"
-  default     = "wordpress"
 }

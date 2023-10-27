@@ -1,3 +1,7 @@
+output "db_instance" {
+  value = var.rds_name
+}
+
 output "db_endpoint" {
   value = resource.aws_db_instance.db_instance.endpoint
 }
