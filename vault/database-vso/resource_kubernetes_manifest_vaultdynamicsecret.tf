@@ -24,7 +24,7 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
 
   wait {
     fields = {
-      "status.valid" = true
+      "status.lastRenewalTime" = "^(\\d+){10}$"
     }
   }
 }
