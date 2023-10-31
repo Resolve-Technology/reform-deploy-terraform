@@ -1,7 +1,7 @@
 resource "kubernetes_manifest" "vault_dynamic_secret" {
   manifest = {
     apiVersion = "secrets.hashicorp.com/v1beta1"
-    kind       = "VaultAuth"
+    kind       = "VaultDynamicSecret"
 
     metadata = {
       name = var.app_name
