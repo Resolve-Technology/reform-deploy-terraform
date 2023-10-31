@@ -12,4 +12,10 @@ resource "kubernetes_manifest" "vault_connection" {
         address: "http://vault.vault.svc.cluster.local:8200"
     }
   }
+
+  wait {
+    fields = {
+      "status.valid" = true
+    }
+  }
 }
