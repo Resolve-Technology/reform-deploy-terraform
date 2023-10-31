@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "vault_connection" {
     }
 
     spec = {
-        address: "http://vault.vault.svc.cluster.local:8200"
+        address: var.vault_address
     }
   }
 
