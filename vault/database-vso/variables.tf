@@ -84,7 +84,7 @@ variable "target_namespace" {
   description = "The namespace on target Kubernetes cluster"
 }
 
-variable "target_deploymnent" {
+variable "target_deployment" {
   type        = string
   description = "The deployment on target Kubernetes cluster"
 }
