@@ -17,7 +17,7 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
 
         destination = {
           create: true
-          name: join("-", ["vso", var.app_name, "output"])
+          name: join("-", [var.app_name, "vso-output"])
         }
     }
   }
