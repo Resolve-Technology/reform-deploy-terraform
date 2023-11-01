@@ -4,8 +4,8 @@ resource "kubernetes_manifest" "vault_connection" {
     kind       = "VaultConnection"
 
     metadata = {
-      name = var.app_name
-      namespace = var.k8s_namespace
+      name = var.context_name
+      namespace = var.target_namespace
     }
 
     spec = {

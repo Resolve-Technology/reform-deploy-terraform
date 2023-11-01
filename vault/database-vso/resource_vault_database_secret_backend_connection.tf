@@ -2,7 +2,7 @@ resource "vault_database_secret_backend_connection" "database_secret_backend_con
   name          = var.database_username
   backend       = vault_mount.mount.path
   plugin_name   = "mysql-database-plugin"
-  allowed_roles = [var.k8s_namespace]
+  allowed_roles = [var.target_namespace]
 
 
   mysql {

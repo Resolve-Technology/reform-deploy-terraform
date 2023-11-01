@@ -54,11 +54,6 @@ variable "database_role_max_ttl" {
   default = 600
 }
 
-variable "k8s_namespace" {
-  type        = string
-  description = "The namespace of Kubernetes cluster"
-}
-
 variable "k8s_cluster_ca_certificate" {
   type = string
   description = "The CA certificate of Kubernetes cluster"
@@ -74,7 +69,22 @@ variable "k8s_token" {
   description = "The token of Kubernetes cluster"
 }
 
-variable "app_name" {
+variable "context_appname" {
   type = string
   description = "The name of application"
+}
+
+variable "context_name" {
+  type = string
+  description = "The name of application"
+}
+
+variable "target_namespace" {
+  type        = string
+  description = "The namespace on target Kubernetes cluster"
+}
+
+variable "target_deploymnent" {
+  type        = string
+  description = "The deployment on target Kubernetes cluster"
 }

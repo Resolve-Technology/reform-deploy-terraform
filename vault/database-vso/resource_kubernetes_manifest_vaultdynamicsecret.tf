@@ -4,12 +4,12 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
     kind       = "VaultDynamicSecret"
 
     metadata = {
-      name = var.app_name
-      namespace = var.k8s_namespace
+      name = var.context_name
+      namespace = var.target_namespace
     }
 
     spec = {
-        vaultAuthRef: var.app_name
+        vaultAuthRef: var.context_name
 
         mount: vault_mount.mount.path
 
@@ -17,7 +17,12 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
 
         destination = {
           create: true
-          name: join("-", ["vso", var.app_name, "output"])
+          name: join("-", ["vso", var.context_name, "output"])
+        }
+
+        rolloutRestartTargets = {
+          kind: Deployment
+          name: join("-", [var.context_appname, var.target_deploymnent])
         }
     }
   }

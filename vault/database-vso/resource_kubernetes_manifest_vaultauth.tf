@@ -4,18 +4,18 @@ resource "kubernetes_manifest" "vault_auth" {
     kind       = "VaultAuth"
 
     metadata = {
-      name = var.app_name
-      namespace = var.k8s_namespace
+      name = var.context_name
+      namespace = var.target_namespace
     }
 
     spec = {
-        vaultConnectionRef: var.app_name
+        vaultConnectionRef: var.context_name
 
         method: "kubernetes"
         mount: "kubernetes"
 
         kubernetes: {
-          role: var.k8s_namespace
+          role: var.target_namespace
           serviceAccount: "default"
         }
     }

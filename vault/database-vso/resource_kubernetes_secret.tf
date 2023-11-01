@@ -1,7 +1,7 @@
 resource "kubernetes_secret" "secret" {
   metadata {
     name = "default-token"
-    namespace = var.k8s_namespace
+    namespace = var.target_namespace
     annotations = {
       "kubernetes.io/service-account.name" = "default"
     }
