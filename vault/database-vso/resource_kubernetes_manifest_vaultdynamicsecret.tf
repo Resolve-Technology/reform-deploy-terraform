@@ -22,7 +22,7 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
 
         rolloutRestartTargets = {
           kind: Deployment
-          name: join("-", [var.context_appname, var.target_deploymnent])
+          name: join("-", [var.context_appname, var.target_deployment])
         }
     }
   }
