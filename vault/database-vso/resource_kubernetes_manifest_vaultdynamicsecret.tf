@@ -20,10 +20,10 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
           name: join("-", ["vso", var.context_name, "output"])
         }
 
-        # rolloutRestartTargets = {
-        #   kind: "Deployment"
-        #   name: join("-", [var.context_appname, var.target_deployment])
-        # }
+        rolloutRestartTargets = {
+          kind: "Deployment"
+          name: join("-", [var.context_appname, var.target_deployment])
+        }
     }
   }
 
