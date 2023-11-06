@@ -51,7 +51,7 @@ variable "database_password" {
 variable "database_role_max_ttl" {
   type = number
   description = "The max TTL for the dynamic secret"
-  default = 600
+  default = 300
 }
 
 variable "k8s_cluster_ca_certificate" {
