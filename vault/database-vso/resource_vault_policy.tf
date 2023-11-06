@@ -5,5 +5,13 @@ resource "vault_policy" "policy" {
 path "${join("/", [join("-", [var.target_namespace, var.database_instance]), "creds", vault_database_secret_backend_role.database_secret_backend_role.name])}" {
   capabilities = ["read"]
 }
+
+path "sys/leases/+/${join("/", [join("-", [var.target_namespace, var.database_instance]), "creds", vault_database_secret_backend_role.database_secret_backend_role.name])}/*" {
+  capabilities = [ "create", "read", "update", "delete", "list", "sudo" ]
+}
+
+path "sys/leases/+/${join("/", [join("-", [var.target_namespace, var.database_instance]), "creds", vault_database_secret_backend_role.database_secret_backend_role.name])}" {
+  capabilities = [ "create", "read", "update", "delete", "list", "sudo" ]
+}
 EOT
 }
