@@ -13,6 +13,8 @@ resource "kubernetes_manifest" "vault_static_secret" {
 
       mount : vault_aws_secret_backend.aws_secret_backend.path
 
+      type : aws
+
       path : join("/", ["static-creds", vault_aws_secret_backend_static_role.aws_secret_backend_static_role.name])
 
       destination = {
