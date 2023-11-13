@@ -4,4 +4,8 @@ resource "vault_aws_secret_backend" "aws_secret_backend" {
   region                = var.bucket_region
   path                  = join("-", [var.target_namespace, var.bucket_name])
   max_lease_ttl_seconds = var.max_lease_ttl_seconds
+
+  depends_on = [
+    vault_mount.mount
+  ]
 }
