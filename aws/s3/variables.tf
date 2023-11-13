@@ -1,14 +1,21 @@
 variable "aws_region" {
   type    = string
-  default = "ap-east-1"
+  default = "us-west-2"
 }
 
-variable "default_tags" {
-  type    = map(any)
-  default = {}
+variable "aws_access_key" {
+  type = string
 }
 
-variable "bucket_name" {
-  type    = string
-  description = "The name of Bucket"
+variable "aws_secret_key" {
+  type = string
+}
+
+variable "bucket_prefix" {
+  type = string
+}
+
+variable "force_destroy" {
+  type    = bool
+  default = true
 }

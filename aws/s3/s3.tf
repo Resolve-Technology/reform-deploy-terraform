@@ -1,8 +1,5 @@
-resource "aws_s3_bucket" "reform_s3_bucket" {
-  bucket = var.bucket_name
-  
-  tags = {
-    Name = var.bucket_name
-    managed-by = "Terraform"
-  }
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket_prefix = var.bucket_prefix
+
+  force_destroy = var.force_destroy
 }
