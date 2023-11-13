@@ -4,28 +4,28 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
     kind       = "VaultDynamicSecret"
 
     metadata = {
-      name = var.context_name
+      name      = var.context_name
       namespace = var.target_namespace
     }
 
     spec = {
-        vaultAuthRef: var.context_name
+      vaultAuthRef : var.context_name
 
-        mount: vault_mount.mount.path
+      mount : vault_mount.mount.path
 
-        path: join("/", ["creds", vault_database_secret_backend_role.database_secret_backend_role.name])
+      path : join("/", ["creds", vault_database_secret_backend_role.database_secret_backend_role.name])
 
-        destination = {
-          create: true
-          name: join("-", ["vso", var.context_name, "output"])
-        }
+      destination = {
+        create : true
+        name : join("-", ["vso", var.context_name, "output"])
+      }
 
-        rolloutRestartTargets = [{
-          kind: "Deployment"
-          name: join("-", [var.context_appname, var.target_deployment])
-        }]
+      rolloutRestartTargets = [{
+        kind : "Deployment"
+        name : join("-", [var.context_appname, var.target_deployment])
+      }]
 
-        revoke: true
+      revoke : true
     }
   }
 
@@ -34,4 +34,8 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
       "status.lastRenewalTime" = "^(\\d+){10}$"
     }
   }
+
+  depends_on = [
+    kubernetes_manifest.vault_auth
+  ]
 }

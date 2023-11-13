@@ -4,20 +4,20 @@ resource "kubernetes_manifest" "vault_auth" {
     kind       = "VaultAuth"
 
     metadata = {
-      name = var.context_name
+      name      = var.context_name
       namespace = var.target_namespace
     }
 
     spec = {
-        vaultConnectionRef: var.context_name
+      vaultConnectionRef : var.context_name
 
-        method: "kubernetes"
-        mount: "kubernetes"
+      method : "kubernetes"
+      mount : "kubernetes"
 
-        kubernetes: {
-          role: var.target_namespace
-          serviceAccount: "default"
-        }
+      kubernetes : {
+        role : var.target_namespace
+        serviceAccount : "default"
+      }
     }
   }
 
@@ -26,4 +26,10 @@ resource "kubernetes_manifest" "vault_auth" {
       "status.valid" = true
     }
   }
+
+  depends_on = [
+    kubernetes_manifest.vault_connection,
+    vault_policy.policy,
+    kubernetes_secret.secret
+  ]
 }

@@ -4,12 +4,12 @@ resource "kubernetes_manifest" "vault_connection" {
     kind       = "VaultConnection"
 
     metadata = {
-      name = var.context_name
+      name      = var.context_name
       namespace = var.target_namespace
     }
 
     spec = {
-        address: var.vault_address
+      address : var.vault_address
     }
   }
 
@@ -18,4 +18,9 @@ resource "kubernetes_manifest" "vault_connection" {
       "status.valid" = true
     }
   }
+
+  depends_on = [
+    vault_kubernetes_auth_backend_role.kubernetes_auth_backend_role,
+    vault_database_secret_backend_role.database_secret_backend_role
+  ]
 }
