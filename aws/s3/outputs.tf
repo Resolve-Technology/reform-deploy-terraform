@@ -18,7 +18,3 @@ output "vault_root_secret_key" {
 output "vault_iam_user" {
   value = aws_iam_user.iam_user.name
 }
-
-output "vault_iam_user_policy" {
-  value = aws_iam_user_policy.iam_user_policy.name
-}
