@@ -19,3 +19,11 @@ variable "force_destroy" {
   type    = bool
   default = true
 }
+
+variable "context_appname" {
+  type = string
+}
+
+variable "context_name" {
+  type = string
+}
