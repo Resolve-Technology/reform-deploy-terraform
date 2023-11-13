@@ -7,6 +7,7 @@ resource "aws_iam_user_policy" "iam_user_policy_root" {
     Statement = [
       {
         Action = [
+          "iam:GetUser",
           "iam:CreateAccessKey",
           "iam:DeleteAccessKey",
           "iam:ListAccessKeys",
