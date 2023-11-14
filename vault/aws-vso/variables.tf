@@ -58,11 +58,6 @@ variable "target_deployment" {
   description = "The deployment on target Kubernetes cluster"
 }
 
-variable "bucket_prefix" {
-  type        = string
-  description = "The prefix name of bucket"
-}
-
 variable "bucket_name" {
   type        = string
   description = "The name of bucket"
@@ -78,12 +73,12 @@ variable "bucket_region" {
   description = "The region of bucket"
 }
 
-variable "vault_root_access_key" {
+variable "access_key" {
   type        = string
   description = "The IAM Access Key for the backend of AWS Secret Engine"
 }
 
-variable "vault_root_secret_key" {
+variable "secret_key" {
   type        = string
   description = "The IAM Secret Access Key for the backend of AWS Secret Engine"
 }
