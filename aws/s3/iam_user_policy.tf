@@ -1,5 +1,5 @@
 resource "aws_iam_user_policy" "iam_user_policy_root" {
-  name_prefix = join("", [join("-", ["vault", var.context_appname, var.bucket_prefix, "root"]), "-"])
+  name_prefix = join("", [join("-", ["vault", var.context_name, "root"]), "-"])
   user        = aws_iam_user.iam_user.name
 
   policy = jsonencode({
