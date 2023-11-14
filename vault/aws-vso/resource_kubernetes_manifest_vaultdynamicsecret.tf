@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
     spec = {
       vaultAuthRef : var.context_name
 
-      mount : vault_mount.mount.path
+      mount : vault_aws_secret_backend.aws_secret_backend.path
 
       path : join("/", ["creds", ])
 
