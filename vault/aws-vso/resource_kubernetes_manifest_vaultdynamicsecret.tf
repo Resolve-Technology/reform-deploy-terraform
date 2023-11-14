@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "vault_dynamic_secret" {
 
       mount : vault_aws_secret_backend.aws_secret_backend.path
 
-      path : join("/", ["creds", ])
+      path : join("/", ["creds", vault_aws_secret_backend_role.aws_secret_backend_role.name])
 
       destination = {
         create : true
