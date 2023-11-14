@@ -1,27 +1,5 @@
 resource "aws_iam_user_policy" "iam_user_policy_root" {
-  name_prefix = join("", [join("-", [var.context_appname, var.bucket_prefix, "root"]), "-"])
-  user        = aws_iam_user.iam_user_root.name
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "iam:GetUser",
-          "iam:CreateAccessKey",
-          "iam:DeleteAccessKey",
-          "iam:ListAccessKeys",
-          "iam:UpdateAccessKey"
-        ]
-        Effect   = "Allow"
-        Resource = "*"
-      },
-    ]
-  })
-}
-
-resource "aws_iam_user_policy" "iam_user_policy" {
-  name_prefix = join("", [join("-", [var.context_appname, var.bucket_prefix]), "-"])
+  name_prefix = join("", [join("-", ["vault", var.context_appname, var.bucket_prefix, "root"]), "-"])
   user        = aws_iam_user.iam_user.name
 
   policy = jsonencode({
@@ -29,10 +7,24 @@ resource "aws_iam_user_policy" "iam_user_policy" {
     Statement = [
       {
         Action = [
-          "s3:GetObject"
+          "iam:AttachUserPolicy",
+          "iam:CreateAccessKey",
+          "iam:CreateUser",
+          "iam:DeleteAccessKey",
+          "iam:DeleteUser",
+          "iam:DeleteUserPolicy",
+          "iam:DetachUserPolicy",
+          "iam:GetUser",
+          "iam:ListAccessKeys",
+          "iam:ListAttachedUserPolicies",
+          "iam:ListGroupsForUser",
+          "iam:ListUserPolicies",
+          "iam:PutUserPolicy",
+          "iam:AddUserToGroup",
+          "iam:RemoveUserFromGroup"
         ]
         Effect   = "Allow"
-        Resource = join("/", [aws_s3_bucket.s3_bucket.arn, "*"])
+        Resource = "*"
       },
     ]
   })

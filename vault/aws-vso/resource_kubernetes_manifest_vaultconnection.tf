@@ -21,6 +21,6 @@ resource "kubernetes_manifest" "vault_connection" {
 
   depends_on = [
     vault_kubernetes_auth_backend_role.kubernetes_auth_backend_role,
-    vault_aws_secret_backend_static_role.aws_secret_backend_static_role
+    vault_aws_secret_backend_role.aws_secret_backend_role
   ]
 }

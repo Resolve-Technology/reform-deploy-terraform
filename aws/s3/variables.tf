@@ -11,6 +11,14 @@ variable "aws_secret_key" {
   type = string
 }
 
+variable "context_appname" {
+  type = string
+}
+
+variable "context_name" {
+  type = string
+}
+
 variable "bucket_prefix" {
   type = string
 }
@@ -18,12 +26,4 @@ variable "bucket_prefix" {
 variable "force_destroy" {
   type    = bool
   default = true
-}
-
-variable "context_appname" {
-  type = string
-}
-
-variable "context_name" {
-  type = string
 }
