@@ -1,4 +1,4 @@
 resource "vault_mount" "mount" {
-  path = join("-", [var.target_namespace, var.database_instance])
+  path = var.context_name
   type = "database"
 }

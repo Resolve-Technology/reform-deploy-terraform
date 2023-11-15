@@ -15,7 +15,7 @@ resource "kubernetes_manifest" "vault_auth" {
       mount : "kubernetes"
 
       kubernetes : {
-        role : var.target_namespace
+        role : var.context_name
         serviceAccount : "default"
       }
     }
