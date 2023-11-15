@@ -12,6 +12,13 @@ resource "vault_aws_secret_backend_role" "aws_secret_backend_role" {
         Effect   = "Allow"
         Resource = join("/", [var.bucket_arn, "*"])
       },
+      {
+        Action = [
+          "s3:ListBucket"
+        ]
+        Effect   = "Allow"
+        Resource = var.bucket_arn
+      }
     ]
   })
 }
